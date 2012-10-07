@@ -8,22 +8,22 @@ Ext.define('Ab.controller.Accounts', {
         },
         control: {
             'accountlist': {
-                'recordtap': 'onRecordTap'
+                'recordtap': 'showDetail'
             },
             'main #historyDetail': {
-                'backtolist': 'onBackToList'
+                'backtolist': 'showList'
             }
         }
     },
 
-    onRecordTap: function(record) {
-        console.log('record tap', record);
+    showDetail: function(record) {
+        console.log('show detail', record);
         this.getDetail().setRecord(record);
         this.getPage().setActiveItem(1);
     },
 
-    onBackToList: function() {
-        console.log('back to list in controller');
+    showList: function() {
+        console.log('show list');
         this.getPage().setActiveItem(0);
     },
 
