@@ -18,10 +18,11 @@ Ext.define('Ab.view.Main', {
                 items: [
                     {
                         xtype: 'container',
-                        itemId: 'historypage',
+                        itemId: 'history',
                         layout: 'card',
                         items: [
                             {
+                                itemId: 'historyList',
                                 layout: 'fit',
                                 items:[
                                     {

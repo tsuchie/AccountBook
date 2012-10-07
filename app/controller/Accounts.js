@@ -4,7 +4,7 @@ Ext.define('Ab.controller.Accounts', {
     config: {
         refs: {
             'detail': 'accountdetail',
-            'page': 'main #historypage'
+            'page': 'main #history'
         },
         control: {
             'accountlist': {
