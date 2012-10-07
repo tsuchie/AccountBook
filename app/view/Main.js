@@ -47,7 +47,7 @@ Ext.define('Ab.view.Main', {
                                                 xtype: 'button',
                                                 ui: 'back',
                                                 text: '戻る',
-                                                itemId: 'backToList'
+                                                itemId: 'backToListButton'
                                             },
                                             {
                                                 xtype: 'button',
@@ -65,7 +65,7 @@ Ext.define('Ab.view.Main', {
                                 ],
                                 listeners: [
                                     {
-                                        delegate: '#backToList',
+                                        delegate: '#backToListButton',
                                         event: 'tap',
                                         fn: function () {
                                             console.log('back to list listeners');
