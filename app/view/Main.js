@@ -17,20 +17,53 @@ Ext.define('Ab.view.Main', {
 
                 items: [
                     {
-                        docked: 'top',
-                        xtype: 'titlebar',
-                        title: 'Test'
-                    },
-                    {
                         xtype: 'container',
                         itemId: 'historypage',
                         layout: 'card',
                         items: [
                             {
-                                xtype: 'accountlist'
+                                layout: 'fit',
+                                items:[
+                                    {
+                                        docked: 'top',
+                                        xtype: 'titlebar',
+                                        title: 'Test'
+                                    },
+                                    {
+                                        xtype: 'accountlist'
+                                    }
+                                ]
                             },
                             {
-                                xtype: 'accountdetail'
+                                itemId: 'historyDetail',
+                                items:[
+                                    {
+                                        docked: 'top',
+                                        xtype: 'titlebar',
+                                        title: 'Test',
+                                        items: [
+                                            {
+                                                xtype: 'button',
+                                                ui: 'back',
+                                                text: '戻る',
+                                                itemId: 'backToList'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        xtype: 'accountdetail'
+                                    }
+                                ],
+                                listeners: [
+                                    {
+                                        delegate: '#backToList',
+                                        event: 'tap',
+                                        fn: function () {
+                                            console.log('back to list listeners');
+                                            this.fireEvent('backtolist');
+                                        }
+                                    }
+                                ]
                             }
                         ]
                     }

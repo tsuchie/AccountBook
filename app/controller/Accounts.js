@@ -9,6 +9,9 @@ Ext.define('Ab.controller.Accounts', {
         control: {
             'accountlist': {
                 'recordtap': 'onRecordTap'
+            },
+            'main #historyDetail': {
+                'backtolist': 'onBackToList'
             }
         }
     },
@@ -17,6 +20,11 @@ Ext.define('Ab.controller.Accounts', {
         console.log('record tap', record);
         this.getDetail().setRecord(record);
         this.getPage().setActiveItem(1);
+    },
+
+    onBackToList: function() {
+        console.log('back to list in controller');
+        this.getPage().setActiveItem(0);
     },
 
     //called when the Application is launched, remove if not needed
