@@ -9,11 +9,20 @@ Ext.define('Ab.view.Main', {
     ],
     config: {
         tabBarPosition: 'bottom',
+        listeners: {
+            'activeitemchange': function(self, value, oldValue, eOpts) {
+                console.log(value, oldValue);
+                if (value.getItemId() === 'form') {
+                    value.down('accountform').setup();
+                }
+            }
+        },
         items: [
             {
                 title: 'ホーム',
                 iconCls: 'home',
                 layout: 'fit',
+                itemId: 'home',
 
                 items: [
                     {
@@ -27,6 +36,7 @@ Ext.define('Ab.view.Main', {
                 title: '入力する',
                 iconCls: 'compose1',
                 layout: 'fit',
+                itemId: 'form',
 
                 items: [
                     {
@@ -43,11 +53,12 @@ Ext.define('Ab.view.Main', {
                 title: '履歴',
                 iconCls: 'list',
                 layout: 'fit',
+                itemId: 'history',
 
                 items: [
                     {
                         xtype: 'container',
-                        itemId: 'history',
+                        itemId: 'historyPage',
                         layout: 'card',
                         items: [
                             {
@@ -119,6 +130,7 @@ Ext.define('Ab.view.Main', {
                 title: '設定',
                 iconCls: 'settings9',
                 layout: 'fit',
+                itemId: 'setting',
 
                 items: [
                     {

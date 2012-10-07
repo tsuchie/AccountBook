@@ -5,7 +5,7 @@ Ext.define('Ab.controller.Accounts', {
         refs: {
             'detail': 'accountdetail',
             'form': 'accountform',
-            'page': 'main #history',
+            'page': 'main #historyPage',
             'main': 'main'
         },
         control: {
@@ -20,6 +20,9 @@ Ext.define('Ab.controller.Accounts', {
                 'showeditform': 'showEditForm',
                 'showdeleteconfirm': 'showDeleteConfirm',
                 'canselaction': 'hideAction'
+            },
+            'form': {
+                'saverecord': 'saveRecord'
             }
         }
     },
@@ -60,6 +63,16 @@ Ext.define('Ab.controller.Accounts', {
                 this.deleteRecord(record);
             }
         }, this);
+    },
+
+    saveRecord: function (record, values) {
+        console.log('save record in controller', record, values);
+        record.setValues(values);
+        var store = Ext.getStore('Accounts');
+        if (Ext.isEmpty(store.findRecord('id', record.get('id')))) {
+            store.add(record);
+        }
+        store.sync();
     },
 
     deleteRecord: function(record) {
