@@ -10,7 +10,7 @@ Ext.define('Ab.view.Main', {
         items: [
             {
                 title: 'Test',
-                iconCls: 'trash',
+                iconCls: 'list',
                 layout: 'fit',
 
                 items: [
