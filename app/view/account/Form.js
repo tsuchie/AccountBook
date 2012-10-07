@@ -2,6 +2,12 @@ Ext.define('Ab.view.account.Form', {
     extend: 'Ext.form.Panel',
     xtype: 'accountform',
 
+    requires: [
+        'Ext.field.Number',
+        'Ext.field.Select',
+        'Ext.field.DatePicker'
+    ],
+
     config: {
         items: [
             {

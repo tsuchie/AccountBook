@@ -1,6 +1,11 @@
 Ext.define('Ab.view.account.Detail', {
     extend: 'Ext.Container',
     xtype: 'accountdetail',
+
+    requires: [
+        'Ext.ActionSheet'
+    ],
+
     config: {
         tpl: [
             '<div>{recorded}</div>',
