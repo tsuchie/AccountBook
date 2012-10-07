@@ -4,7 +4,9 @@ Ext.define('Ab.controller.Accounts', {
     config: {
         refs: {
             'detail': 'accountdetail',
-            'page': 'main #history'
+            'form': 'accountform',
+            'page': 'main #history',
+            'main': 'main'
         },
         control: {
             'accountlist': {
@@ -13,6 +15,11 @@ Ext.define('Ab.controller.Accounts', {
             'main #historyDetail': {
                 'backtolist': 'showList',
                 'showaction': 'showAction'
+            },
+            'detail': {
+                'showeditform': 'showEditForm',
+                'showdeleteconfirm': 'showDeleteConfirm',
+                'canselaction': 'hideAction'
             }
         }
     },
@@ -31,6 +38,18 @@ Ext.define('Ab.controller.Accounts', {
     showAction: function() {
         console.log('show action');
         this.getDetail().showActionSheet();
+    },
+
+    hideAction: function() {
+        console.log('show action');
+        this.getDetail().hideActionSheet();
+    },
+
+    showEditForm: function(record) {
+        console.log('show action');
+        this.hideAction();
+        this.getForm().setRecord(record);
+        this.getMain().setActiveItem(1);
     },
 
     //called when the Application is launched, remove if not needed
