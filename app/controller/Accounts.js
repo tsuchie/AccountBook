@@ -52,6 +52,21 @@ Ext.define('Ab.controller.Accounts', {
         this.getMain().setActiveItem(1);
     },
 
+    showDeleteConfirm: function(record) {
+        Ext.Msg.confirm('確認', '削除してもいいですか？', function(btn) {
+            console.log(btn);
+            this.hideAction();
+            if (btn === 'yes') {
+                this.deleteRecord(record);
+            }
+        }, this);
+    },
+
+    deleteRecord: function(record) {
+        //TODO implement
+        console.log('deleteRecord is not implemented yet.');
+    },
+
     //called when the Application is launched, remove if not needed
     launch: function(app) {
 
