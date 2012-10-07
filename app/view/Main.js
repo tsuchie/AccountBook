@@ -4,7 +4,8 @@ Ext.define('Ab.view.Main', {
     requires: [
         'Ext.TitleBar',
         'Ab.view.account.List',
-        'Ab.view.account.Detail'
+        'Ab.view.account.Detail',
+        'Ab.view.account.Form'
     ],
     config: {
         tabBarPosition: 'bottom',
@@ -45,6 +46,22 @@ Ext.define('Ab.view.Main', {
                             recorded: '2012-10-07 12:00:00',
                             memo: 'Red bull'
                         }
+                    }
+                ]
+            },
+            {
+                title: 'Form',
+                iconCls: 'list',
+                layout: 'fit',
+
+                items: [
+                    {
+                        docked: 'top',
+                        xtype: 'titlebar',
+                        title: 'Test Detail'
+                    },
+                    {
+                        xtype: 'accountform'
                     }
                 ]
             }
