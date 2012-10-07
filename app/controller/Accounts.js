@@ -11,9 +11,15 @@ Ext.define('Ab.controller.Accounts', {
                 'recordtap': 'showDetail'
             },
             'main #historyDetail': {
-                'backtolist': 'showList'
+                'backtolist': 'showList',
+                'showaction': 'showAction'
             }
         }
+    },
+
+    showList: function() {
+        console.log('show list');
+        this.getPage().setActiveItem(0);
     },
 
     showDetail: function(record) {
@@ -22,9 +28,9 @@ Ext.define('Ab.controller.Accounts', {
         this.getPage().setActiveItem(1);
     },
 
-    showList: function() {
-        console.log('show list');
-        this.getPage().setActiveItem(0);
+    showAction: function() {
+        console.log('show action');
+        this.getDetail().showActionSheet();
     },
 
     //called when the Application is launched, remove if not needed
