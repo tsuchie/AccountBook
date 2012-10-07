@@ -8,6 +8,8 @@ Ext.Loader.setPath({
 Ext.application({
     models: ["Account"],
 
+    stores: ['Accounts'],
+
     name: 'Ab',
 
     requires: [
