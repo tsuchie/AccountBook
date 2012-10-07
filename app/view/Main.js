@@ -11,7 +11,36 @@ Ext.define('Ab.view.Main', {
         tabBarPosition: 'bottom',
         items: [
             {
-                title: 'List',
+                title: 'ホーム',
+                iconCls: 'home',
+                layout: 'fit',
+
+                items: [
+                    {
+                        docked: 'top',
+                        xtype: 'titlebar',
+                        title: 'ホーム'
+                    }
+                ]
+            },
+            {
+                title: '入力する',
+                iconCls: 'compose1',
+                layout: 'fit',
+
+                items: [
+                    {
+                        docked: 'top',
+                        xtype: 'titlebar',
+                        title: '入力する'
+                    },
+                    {
+                        xtype: 'accountform'
+                    }
+                ]
+            },
+            {
+                title: '履歴',
                 iconCls: 'list',
                 layout: 'fit',
 
@@ -28,7 +57,7 @@ Ext.define('Ab.view.Main', {
                                     {
                                         docked: 'top',
                                         xtype: 'titlebar',
-                                        title: 'Test'
+                                        title: '履歴'
                                     },
                                     {
                                         xtype: 'accountlist'
@@ -41,7 +70,7 @@ Ext.define('Ab.view.Main', {
                                     {
                                         docked: 'top',
                                         xtype: 'titlebar',
-                                        title: 'Test',
+                                        title: '履歴',
                                         items: [
                                             {
                                                 xtype: 'button',
@@ -87,18 +116,15 @@ Ext.define('Ab.view.Main', {
                 ]
             },
             {
-                title: 'Form',
-                iconCls: 'list',
+                title: '設定',
+                iconCls: 'settings9',
                 layout: 'fit',
 
                 items: [
                     {
                         docked: 'top',
                         xtype: 'titlebar',
-                        title: 'Test Detail'
-                    },
-                    {
-                        xtype: 'accountform'
+                        title: '設定'
                     }
                 ]
             }
