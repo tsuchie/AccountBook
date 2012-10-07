@@ -4,7 +4,7 @@ Ext.define('Ab.controller.Accounts', {
     config: {
         refs: {
             'detail': 'accountdetail',
-            'tab': 'main'
+            'page': 'main #historypage'
         },
         control: {
             'accountlist': {
@@ -16,7 +16,7 @@ Ext.define('Ab.controller.Accounts', {
     onRecordTap: function(record) {
         console.log('record tap', record);
         this.getDetail().setRecord(record);
-        this.getTab().setActiveItem(1);
+        this.getPage().setActiveItem(1);
     },
 
     //called when the Application is launched, remove if not needed
