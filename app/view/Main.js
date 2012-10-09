@@ -12,9 +12,10 @@ Ext.define('Ab.view.Main', {
         listeners: {
             'activeitemchange': function(self, value, oldValue, eOpts) {
                 console.log(value, oldValue);
-                if (value.getItemId() === 'form') {
+                if (value.getItemId() === 'account/new') {
                     value.down('accountform').setup();
                 }
+                Ab.app.updateUrl(value.getItemId());
             }
         },
         items: [
@@ -36,7 +37,7 @@ Ext.define('Ab.view.Main', {
                 title: '入力する',
                 iconCls: 'compose1',
                 layout: 'fit',
-                itemId: 'form',
+                itemId: 'account/new',
 
                 items: [
                     {
@@ -53,16 +54,16 @@ Ext.define('Ab.view.Main', {
                 title: '履歴',
                 iconCls: 'list',
                 layout: 'fit',
-                itemId: 'history',
+                itemId: 'accounts',
 
                 items: [
                     {
                         xtype: 'container',
-                        itemId: 'historyPage',
+                        itemId: 'accountPage',
                         layout: 'card',
                         items: [
                             {
-                                itemId: 'historyList',
+                                itemId: 'accountList',
                                 layout: 'fit',
                                 items:[
                                     {
@@ -76,7 +77,7 @@ Ext.define('Ab.view.Main', {
                                 ]
                             },
                             {
-                                itemId: 'historyDetail',
+                                itemId: 'accountDetail',
                                 items:[
                                     {
                                         docked: 'top',

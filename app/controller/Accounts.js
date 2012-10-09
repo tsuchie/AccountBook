@@ -2,17 +2,23 @@ Ext.define('Ab.controller.Accounts', {
     extend: 'Ext.app.Controller',
 
     config: {
+        routes: {
+            'accounts': 'showList',
+            'account/new': 'showCreateForm',
+            'account/:id': 'showDetail',
+            'account/:id/edit': 'showEditForm'
+        },
         refs: {
             'detail': 'accountdetail',
             'form': 'accountform',
-            'page': 'main #historyPage',
+            'page': 'main #accountPage',
             'main': 'main'
         },
         control: {
             'accountlist': {
                 'recordtap': 'showDetail'
             },
-            'main #historyDetail': {
+            'main #accountDetail': {
                 'backtolist': 'showList',
                 'showaction': 'showAction'
             },
@@ -29,12 +35,17 @@ Ext.define('Ab.controller.Accounts', {
 
     showList: function() {
         console.log('show list');
+        this.getMain().setActiveItem(2);
         this.getPage().setActiveItem(0);
+    },
+
+    showCreateForm: function() {
     },
 
     showDetail: function(record) {
         console.log('show detail', record);
         this.getDetail().setRecord(record);
+        this.getMain().setActiveItem(2);
         this.getPage().setActiveItem(1);
     },
 
@@ -65,7 +76,7 @@ Ext.define('Ab.controller.Accounts', {
         }, this);
     },
 
-    saveRecord: function (record, values) {
+    saveRecord: function(record, values) {
         console.log('save record in controller', record, values);
         record.setValues(values);
         var store = Ext.getStore('Accounts');
