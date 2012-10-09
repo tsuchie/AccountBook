@@ -19,9 +19,10 @@ Ext.define('Ab.controller.Accounts', {
                 'recordtap': 'showDetail'
             },
             'detail': {
-                'showeditform': 'showEditForm',
+                'showeditform': 'goEditForm',
                 'showdeleteconfirm': 'showDeleteConfirm',
                 'showaction': 'showAction',
+                'hideaction': 'hideAction',
                 'canselaction': 'hideAction'
             },
             'form': {
@@ -39,20 +40,24 @@ Ext.define('Ab.controller.Accounts', {
 
     showEditForm: Ext.emptyFn,
 
+    goEditForm: function(record) {
+        console.log('go edit form', record.get('id'));
+        Ab.app.updateUrl('account/' + record.get('id') + '/edit');
+    },
+
     showAction: function() {
         console.log('show action');
         this.getDetail().showActionSheet();
     },
 
     hideAction: function() {
-        console.log('show action');
+        console.log('hide action');
         this.getDetail().hideActionSheet();
     },
 
     showDeleteConfirm: function(record) {
         Ext.Msg.confirm('確認', '削除してもいいですか？', function(btn) {
             console.log(btn);
-            this.hideAction();
             if (btn === 'yes') {
                 this.deleteRecord(record);
             }
@@ -78,4 +83,5 @@ Ext.define('Ab.controller.Accounts', {
     launch: function(app) {
 
     }
+
 });

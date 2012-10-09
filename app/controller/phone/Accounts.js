@@ -24,6 +24,8 @@ Ext.define('Ab.controller.phone.Accounts', {
     },
 
     showCreateForm: function() {
+        this.getForm().setup();
+        this.showForm(true);
     },
 
     showDetail: function(record) {
@@ -33,11 +35,23 @@ Ext.define('Ab.controller.phone.Accounts', {
         this.getPage().setActiveItem(1);
     },
 
-    showEditForm: function(record) {
-        console.log('show action');
-        this.hideAction();
+    showEditForm: function(id) {
+        console.log('show edit form');
+        var store = Ext.getStore('Accounts');
+        var record = store.findRecord('id', id);
+        if (Ext.isEmpty(record)) {
+            Ab.app.updateUrl('accounts');
+            return;
+        }
         this.getForm().setRecord(record);
+        this.showForm(false);
+    },
+
+    showForm: function(updateUrl) {
+        var old = this.getMain().getActiveItem();
+        old.setUpdateUrl(updateUrl);
         this.getMain().setActiveItem(1);
+        old.setUpdateUrl(true);
     }
 
 });
