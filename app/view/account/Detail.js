@@ -25,6 +25,7 @@ Ext.define('Ab.view.account.Detail', {
                 {
                     text: '編集',
                     handler: function() {
+                        me.fireEvent('hideaction');
                         me.fireEvent('showeditform', me.getRecord());
                     }
                 },
@@ -32,6 +33,7 @@ Ext.define('Ab.view.account.Detail', {
                     text: '削除',
                     ui  : 'decline',
                     handler: function() {
+                        me.fireEvent('hideaction');
                         me.fireEvent('showdeleteconfirm', me.getRecord());
                     }
                 },

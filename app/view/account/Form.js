@@ -69,7 +69,7 @@ Ext.define('Ab.view.account.Form', {
 
     setup: function() {
         var now = new Date();
-        var id = now.getTime() + '$' + (Math.random() * 1000 | 0);
+        var id = now.getTime() + '_' + (Math.random() * 1000 | 0);
         console.log('setup form', id);
         var record = Ext.create('Ab.model.Account', {
             id: id,
