@@ -3,10 +3,11 @@ Ext.define('Ab.controller.phone.Accounts', {
 
     config: {
         refs: {
-
+            'page': 'phonemain #accountPage',
+            'main': 'phonemain'
         },
         control: {
-            'main #accountDetail': {
+            'phonemain #accountDetail': {
                 'backtolist': 'showList'
             }
         }

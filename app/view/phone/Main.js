@@ -1,6 +1,6 @@
 Ext.define('Ab.view.phone.Main', {
     extend: 'Ext.tab.Panel',
-    xtype: 'main',
+    xtype: 'phonemain',
     requires: [
         'Ab.view.phone.Home',
         'Ab.view.phone.Form',

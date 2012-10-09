@@ -10,9 +10,7 @@ Ext.define('Ab.controller.Accounts', {
         },
         refs: {
             'detail': 'accountdetail',
-            'form': 'accountform',
-            'page': 'main #accountPage',
-            'main': 'main'
+            'form': 'accountform'
         },
         control: {
             'accountlist': {
