@@ -125,7 +125,7 @@ Ext.define('Ab.view.phone.Main', {
                                         event: 'tap',
                                         fn: function () {
                                             console.log('action button');
-                                            this.fireEvent('showaction');
+                                            this.down('accountdetail').fireEvent('showaction');
                                         }
                                     }
                                 ]

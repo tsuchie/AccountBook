@@ -18,13 +18,10 @@ Ext.define('Ab.controller.Accounts', {
             'accountlist': {
                 'recordtap': 'showDetail'
             },
-            'main #accountDetail': {
-                'backtolist': 'showList',
-                'showaction': 'showAction'
-            },
             'detail': {
                 'showeditform': 'showEditForm',
                 'showdeleteconfirm': 'showDeleteConfirm',
+                'showaction': 'showAction',
                 'canselaction': 'hideAction'
             },
             'form': {

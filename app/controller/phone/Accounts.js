@@ -2,17 +2,13 @@ Ext.define('Ab.controller.phone.Accounts', {
     extend: 'Ab.controller.Accounts',
 
     config: {
-        routes: {
-            'accounts': 'showList',
-            'account/new': 'showCreateForm',
-            'account/:id': 'showDetail',
-            'account/:id/edit': 'showEditForm'
-        },
         refs: {
 
         },
         control: {
-
+            'main #accountDetail': {
+                'backtolist': 'showList'
+            }
         }
     },
 
