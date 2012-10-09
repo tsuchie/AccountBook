@@ -33,21 +33,14 @@ Ext.define('Ab.controller.Accounts', {
         }
     },
 
-    showList: function() {
-        console.log('show list');
-        this.getMain().setActiveItem(2);
-        this.getPage().setActiveItem(0);
-    },
 
-    showCreateForm: function() {
-    },
+    showList: Ext.emptyFn,
 
-    showDetail: function(record) {
-        console.log('show detail', record);
-        this.getDetail().setRecord(record);
-        this.getMain().setActiveItem(2);
-        this.getPage().setActiveItem(1);
-    },
+    showCreateForm: Ext.emptyFn,
+
+    showDetail: Ext.emptyFn,
+
+    showEditForm: Ext.emptyFn,
 
     showAction: function() {
         console.log('show action');
@@ -57,13 +50,6 @@ Ext.define('Ab.controller.Accounts', {
     hideAction: function() {
         console.log('show action');
         this.getDetail().hideActionSheet();
-    },
-
-    showEditForm: function(record) {
-        console.log('show action');
-        this.hideAction();
-        this.getForm().setRecord(record);
-        this.getMain().setActiveItem(1);
     },
 
     showDeleteConfirm: function(record) {

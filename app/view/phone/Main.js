@@ -7,8 +7,14 @@ Ext.define('Ab.view.phone.Main', {
         'Ab.view.account.Detail',
         'Ab.view.account.Form'
     ],
+
     config: {
         tabBarPosition: 'bottom',
+
+        layout: {
+            animation: ''
+        },
+
         listeners: {
             'activeitemchange': function(self, value, oldValue, eOpts) {
                 console.log(value, oldValue);
@@ -18,6 +24,7 @@ Ext.define('Ab.view.phone.Main', {
                 Ab.app.updateUrl(value.getItemId());
             }
         },
+
         items: [
             {
                 title: 'ホーム',
