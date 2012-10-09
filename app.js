@@ -6,6 +6,8 @@ Ext.Loader.setPath({
 //</debug>
 
 Ext.application({
+    profiles: ["Tablet","Phone"],
+
     controllers: ["Accounts"],
 
     models: ["Account"],
@@ -18,7 +20,7 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
-    views: ['Main'],
+    views: [],
 
     icon: {
         '57': 'resources/icons/Icon.png',
@@ -38,12 +40,8 @@ Ext.application({
         '1496x2048': 'resources/startup/1496x2048.png'
     },
 
-    launch: function() {
-        // Destroy the #appLoadingIndicator element
-        Ext.fly('appLoadingIndicator').destroy();
-
-        // Initialize the main view
-        Ext.Viewport.add(Ext.create('Ab.view.Main'));
+    updateUrl: function(url) {
+        window.location.hash = url;
     },
 
     onUpdated: function() {

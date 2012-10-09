@@ -1,4 +1,4 @@
-Ext.define('Ab.view.Main', {
+Ext.define('Ab.view.phone.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
     requires: [
