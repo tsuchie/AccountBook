@@ -85,8 +85,11 @@ Ext.define('Ab.controller.Accounts', {
     },
 
     deleteRecord: function(record) {
-        //TODO implement
-        console.log('deleteRecord is not implemented yet.');
+        console.log('delete record', record);
+        var store = Ext.getStore('Accounts');
+        store.remove(record);
+        store.sync();
+        this.redirectTo('accounts');
     },
 
     //called when the Application is launched, remove if not needed
