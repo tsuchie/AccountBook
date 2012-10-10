@@ -8,7 +8,7 @@ Ext.Loader.setPath({
 Ext.application({
     profiles: ["Tablet","Phone"],
 
-    controllers: ["phone.Accounts","Accounts"],
+    controllers: [],
 
     models: ["Account"],
 
