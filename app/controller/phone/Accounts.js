@@ -8,7 +8,7 @@ Ext.define('Ab.controller.phone.Accounts', {
         },
         control: {
             'phonemain #accountDetail': {
-                'backtolist': 'showList'
+                'backtolist': 'goList'
             }
         }
     },
@@ -29,8 +29,14 @@ Ext.define('Ab.controller.phone.Accounts', {
         this.showForm(true);
     },
 
-    showDetail: function(record) {
-        console.log('show detail', record);
+    showDetail: function(id) {
+        console.log('show detail', id);
+        var store = Ext.getStore('Accounts');
+        var record = store.findRecord('id', id);
+        if (Ext.isEmpty(record)) {
+            this.goList();
+            return;
+        }
         this.getDetail().setRecord(record);
         this.getMain().setActiveItem(2);
         this.getPage().setActiveItem(1);
@@ -41,7 +47,7 @@ Ext.define('Ab.controller.phone.Accounts', {
         var store = Ext.getStore('Accounts');
         var record = store.findRecord('id', id);
         if (Ext.isEmpty(record)) {
-            Ab.app.updateUrl('accounts');
+            this.goList();
             return;
         }
         this.getForm().setRecord(record);

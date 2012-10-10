@@ -9,7 +9,7 @@ Ext.define('Ab.view.phone.Form', {
 
     config: {
         title: '入力する',
-        url: 'account/new',
+        url: 'accounts/new',
         iconCls: 'compose1',
         layout: 'fit',
 

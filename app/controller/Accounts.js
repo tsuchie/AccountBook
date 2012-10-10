@@ -4,9 +4,9 @@ Ext.define('Ab.controller.Accounts', {
     config: {
         routes: {
             'accounts': 'showList',
-            'account/new': 'showCreateForm',
-            'account/:id': 'showDetail',
-            'account/:id/edit': 'showEditForm'
+            'accounts/new': 'showCreateForm',
+            'accounts/:id': 'showDetail',
+            'accounts/:id/edit': 'showEditForm'
         },
         refs: {
             'detail': 'accountdetail',
@@ -14,7 +14,7 @@ Ext.define('Ab.controller.Accounts', {
         },
         control: {
             'accountlist': {
-                'recordtap': 'showDetail'
+                'recordtap': 'goDetail'
             },
             'detail': {
                 'showeditform': 'goEditForm',
@@ -38,9 +38,19 @@ Ext.define('Ab.controller.Accounts', {
 
     showEditForm: Ext.emptyFn,
 
+    goList: function() {
+        console.log('go list');
+        this.redirectTo('accounts');
+    },
+
+    goDetail: function(record) {
+        console.log('go detail', record.get('id'));
+        this.redirectTo('accounts/' + record.get('id'));
+    },
+
     goEditForm: function(record) {
         console.log('go edit form', record.get('id'));
-        Ab.app.updateUrl('account/' + record.get('id') + '/edit');
+        this.redirectTo('accounts/' + record.get('id') + '/edit');
     },
 
     showAction: function() {
@@ -66,10 +76,12 @@ Ext.define('Ab.controller.Accounts', {
         console.log('save record in controller', record, values);
         record.setValues(values);
         var store = Ext.getStore('Accounts');
-        if (Ext.isEmpty(store.findRecord('id', record.get('id')))) {
+        var id = record.get('id');
+        if (Ext.isEmpty(store.findRecord('id', id))) {
             store.add(record);
         }
         store.sync();
+        this.redirectTo('accounts/' + id);
     },
 
     deleteRecord: function(record) {
