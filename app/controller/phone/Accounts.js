@@ -31,27 +31,19 @@ Ext.define('Ab.controller.phone.Accounts', {
 
     showDetail: function(id) {
         console.log('show detail', id);
-        var store = Ext.getStore('Accounts');
-        var record = store.findRecord('id', id);
-        if (Ext.isEmpty(record)) {
-            this.goList();
-            return;
-        }
-        this.getDetail().setRecord(record);
-        this.getMain().setActiveItem(2);
-        this.getPage().setActiveItem(1);
+        this.getRecordAnd(id, function(record) {
+            this.getDetail().setRecord(record);
+            this.getMain().setActiveItem(2);
+            this.getPage().setActiveItem(1);
+        });
     },
 
     showEditForm: function(id) {
         console.log('show edit form');
-        var store = Ext.getStore('Accounts');
-        var record = store.findRecord('id', id);
-        if (Ext.isEmpty(record)) {
-            this.goList();
-            return;
-        }
-        this.getForm().setRecord(record);
-        this.showForm(false);
+        this.getRecordAnd(id, function(record) {
+            this.getForm().setRecord(record);
+            this.showForm(false);
+        });
     },
 
     showForm: function(updateUrl) {
@@ -59,6 +51,16 @@ Ext.define('Ab.controller.phone.Accounts', {
         old.setUpdateUrl(updateUrl);
         this.getMain().setActiveItem(1);
         old.setUpdateUrl(true);
+    },
+
+    getRecordAnd: function(id, fn) {
+        var store = Ext.getStore('Accounts');
+        var record = store.findRecord('id', id);
+        if (Ext.isEmpty(record)) {
+            this.goList();
+            return;
+        }
+        fn.call(this, record);
     }
 
 });

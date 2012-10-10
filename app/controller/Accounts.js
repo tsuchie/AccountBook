@@ -81,7 +81,7 @@ Ext.define('Ab.controller.Accounts', {
             store.add(record);
         }
         store.sync();
-        this.redirectTo('accounts/' + id);
+        this.goDetail(record);
     },
 
     deleteRecord: function(record) {
@@ -89,7 +89,7 @@ Ext.define('Ab.controller.Accounts', {
         var store = Ext.getStore('Accounts');
         store.remove(record);
         store.sync();
-        this.redirectTo('accounts');
+        this.goList();
     },
 
     //called when the Application is launched, remove if not needed
