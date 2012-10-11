@@ -3,8 +3,17 @@ Ext.define('Ab.view.UrlBasedPanel', {
     xtype: 'urlbasedpanel',
 
     config: {
-        url: null,
+        url: '',
         updateUrl: true
+    },
+
+    mayUpdateUrl: function() {
+        if (this.getUpdateUrl()) {
+            console.log('update url');
+            Ab.app.updateUrl(this.getUrl());
+        }
+        this.setUpdateUrl(true);
     }
+
 });
 

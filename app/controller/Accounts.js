@@ -29,7 +29,6 @@ Ext.define('Ab.controller.Accounts', {
         }
     },
 
-
     showList: Ext.emptyFn,
 
     showCreateForm: Ext.emptyFn,

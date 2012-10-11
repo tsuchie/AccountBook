@@ -16,11 +16,9 @@ Ext.define('Ab.view.phone.Main', {
         },
 
         listeners: {
-            'activeitemchange': function(self, value, oldValue, eOpts) {
-                console.log(value, oldValue);
-                if (oldValue.getUpdateUrl()) {
-                    Ab.app.updateUrl(value.getUrl());
-                }
+            'activeitemchange': function(self, newTab, oldTab, eOpts) {
+                console.log('change tab');
+                newTab.mayUpdateUrl();
             }
         },
 

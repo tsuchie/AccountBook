@@ -4,7 +4,9 @@ Ext.define('Ab.controller.phone.Accounts', {
     config: {
         refs: {
             'page': 'phonemain #accountPage',
-            'main': 'phonemain'
+            'main': 'phonemain',
+            'editPanel': 'phoneform',
+            'viewPanel': 'phoneaccounts'
         },
         control: {
             'phonemain #accountDetail': {
@@ -20,7 +22,7 @@ Ext.define('Ab.controller.phone.Accounts', {
 
     showList: function() {
         console.log('show list in phone');
-        this.getMain().setActiveItem(2);
+        this.getMain().setActiveItem(this.getViewPanel());
         this.getPage().setActiveItem(0);
     },
 
@@ -33,7 +35,8 @@ Ext.define('Ab.controller.phone.Accounts', {
         console.log('show detail', id);
         this.doWithRecord(id, function(record) {
             this.getDetail().setRecord(record);
-            this.getMain().setActiveItem(2);
+            this.getViewPanel().setUpdateUrl(false);
+            this.getMain().setActiveItem(this.getViewPanel());
             this.getPage().setActiveItem(1);
         });
     },
@@ -48,9 +51,8 @@ Ext.define('Ab.controller.phone.Accounts', {
 
     showForm: function(updateUrl) {
         var old = this.getMain().getActiveItem();
-        old.setUpdateUrl(updateUrl);
-        this.getMain().setActiveItem(1);
-        old.setUpdateUrl(true);
+        this.getEditPanel().setUpdateUrl(updateUrl);
+        this.getMain().setActiveItem(this.getEditPanel());
     },
 
     doWithRecord: function(id, fn) {
