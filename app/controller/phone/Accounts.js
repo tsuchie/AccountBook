@@ -31,7 +31,7 @@ Ext.define('Ab.controller.phone.Accounts', {
 
     showDetail: function(id) {
         console.log('show detail', id);
-        this.getRecordAnd(id, function(record) {
+        this.doWithRecord(id, function(record) {
             this.getDetail().setRecord(record);
             this.getMain().setActiveItem(2);
             this.getPage().setActiveItem(1);
@@ -40,7 +40,7 @@ Ext.define('Ab.controller.phone.Accounts', {
 
     showEditForm: function(id) {
         console.log('show edit form');
-        this.getRecordAnd(id, function(record) {
+        this.doWithRecord(id, function(record) {
             this.getForm().setRecord(record);
             this.showForm(false);
         });
@@ -53,7 +53,7 @@ Ext.define('Ab.controller.phone.Accounts', {
         old.setUpdateUrl(true);
     },
 
-    getRecordAnd: function(id, fn) {
+    doWithRecord: function(id, fn) {
         var store = Ext.getStore('Accounts');
         var record = store.findRecord('id', id);
         if (Ext.isEmpty(record)) {
