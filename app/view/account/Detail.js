@@ -1,21 +1,29 @@
 Ext.define('Ab.view.account.Detail', {
-    extend: 'Ext.Container',
+    extend: 'Ext.form.Panel',
     xtype: 'accountdetail',
 
     requires: [
-        'Ext.ActionSheet'
+        'Ext.ActionSheet',
+        'Ab.view.account.FieldSet'
     ],
 
     config: {
-        tpl: [
-            '<div>{recorded}</div>',
-            '<div>{category}</div>',
-            '<div>{account}</div>',
-            '<div>{memo}</div>'
+        items: [
+            {
+                xtype: 'accountfieldset',
+                defaults: {
+                    disabled: true,
+                    disabledCls: null,
+                    component: {
+                        disabled: true,
+                        disabledCls: null
+                    }
+                }
+            }
         ]
     },
 
-    constructor: function () {
+    constructor: function() {
         var me = this;
         this.callParent();
         this.actionSheet = Ext.create('Ext.ActionSheet', {

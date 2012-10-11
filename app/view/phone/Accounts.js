@@ -35,6 +35,7 @@ Ext.define('Ab.view.phone.Accounts', {
                 },
                 {
                     itemId: 'accountDetail',
+                    layout: 'fit',
                     items:[
                         {
                             docked: 'top',
