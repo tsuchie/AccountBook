@@ -16,6 +16,10 @@ Ext.application({
 
     name: 'Ab',
 
+    viewport: {
+        autoMaximize: Ext.os.is('iPhone')
+    },
+
     requires: [
         'Ext.MessageBox'
     ],
