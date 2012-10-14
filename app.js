@@ -1,12 +1,13 @@
 //<debug>
 Ext.Loader.setPath({
     'Ext': 'touch/src',
+    'Ext.ux': 'ux',
     'Ab': 'app'
 });
 //</debug>
 
 Ext.application({
-    profiles: ["Tablet","Phone"],
+    profiles: ["Tablet", "Phone"],
 
     controllers: [],
 

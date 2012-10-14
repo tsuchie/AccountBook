@@ -3,7 +3,7 @@ Ext.define('Ab.view.account.FieldSet', {
     xtype: 'accountfieldset',
 
     requires: [
-        'Ext.field.Number',
+        'Ext.ux.field.Calculator',
         'Ext.field.Select',
         'Ext.field.DatePicker'
     ],
@@ -11,7 +11,7 @@ Ext.define('Ab.view.account.FieldSet', {
     config: {
         items: [
             {
-                xtype: 'numberfield',
+                xtype: 'calculatorfield',
                 name: 'account',
                 label: '金額'
             },
