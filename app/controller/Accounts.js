@@ -9,6 +9,7 @@ Ext.define('Ab.controller.Accounts', {
             'accounts/:id/edit': 'showEditForm'
         },
         refs: {
+            'list': 'accountlist',
             'detail': 'accountdetail',
             'form': 'accountform'
         },

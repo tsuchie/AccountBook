@@ -24,6 +24,7 @@ Ext.define('Ab.controller.phone.Accounts', {
         console.log('show list in phone');
         this.getMain().setActiveItem(this.getViewPanel());
         this.getPage().setActiveItem(0);
+        this.getList().refresh();
     },
 
     showCreateForm: function() {
