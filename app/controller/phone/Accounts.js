@@ -16,54 +16,60 @@ Ext.define('Ab.controller.phone.Accounts', {
     },
 
     //called when the Application is launched, remove if not needed
-    launch: function(app) {
+    launch: function (app) {
 
     },
 
-    showList: function() {
+    showList: function () {
         console.log('show list in phone');
-        this.getMain().setActiveItem(this.getViewPanel());
-        this.getPage().setActiveItem(0);
-        this.getList().refresh();
+        var me = this;
+        me.getMain().setActiveItem(me.getViewPanel());
+        me.getPage().setActiveItem(0);
+        me.getList().refresh();
     },
 
-    showCreateForm: function() {
-        this.getForm().setup();
-        this.showForm(true);
+    showCreateForm: function () {
+        var me = this;
+        me.getForm().setup();
+        me.showForm(true);
     },
 
-    showDetail: function(id) {
+    showDetail: function (id) {
         console.log('show detail', id);
-        this.doWithRecord(id, function(record) {
-            this.getDetail().setRecord(record);
-            this.getViewPanel().setUpdateUrl(false);
-            this.getMain().setActiveItem(this.getViewPanel());
-            this.getPage().setActiveItem(1);
+        var me = this;
+        me.doWithRecord(id, function (record) {
+            me.getDetail().setRecord(record);
+            me.getViewPanel().setUpdateUrl(false);
+            me.getMain().setActiveItem(me.getViewPanel());
+            me.getPage().setActiveItem(1);
         });
     },
 
-    showEditForm: function(id) {
+    showEditForm: function (id) {
         console.log('show edit form');
-        this.doWithRecord(id, function(record) {
-            this.getForm().setRecord(record);
-            this.showForm(false);
+        var me = this;
+        me.doWithRecord(id, function (record) {
+            me.getForm().setRecord(record);
+            me.showForm(false);
         });
     },
 
-    showForm: function(updateUrl) {
-        var old = this.getMain().getActiveItem();
-        this.getEditPanel().setUpdateUrl(updateUrl);
-        this.getMain().setActiveItem(this.getEditPanel());
+    showForm: function (updateUrl) {
+        var me = this;
+        var old = me.getMain().getActiveItem();
+        me.getEditPanel().setUpdateUrl(updateUrl);
+        me.getMain().setActiveItem(me.getEditPanel());
     },
 
-    doWithRecord: function(id, fn) {
+    doWithRecord: function (id, fn) {
+        var me = this;
         var store = Ext.getStore('Accounts');
         var record = store.findRecord('id', id);
         if (Ext.isEmpty(record)) {
-            this.goList();
+            me.goList();
             return;
         }
-        fn.call(this, record);
+        fn.call(me, record);
     }
 
 });

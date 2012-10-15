@@ -22,7 +22,7 @@ Ext.define('Ab.view.phone.Accounts', {
                 {
                     itemId: 'accountList',
                     layout: 'fit',
-                    items:[
+                    items: [
                         {
                             docked: 'top',
                             xtype: 'titlebar',
@@ -36,7 +36,7 @@ Ext.define('Ab.view.phone.Accounts', {
                 {
                     itemId: 'accountDetail',
                     layout: 'fit',
-                    items:[
+                    items: [
                         {
                             docked: 'top',
                             xtype: 'titlebar',

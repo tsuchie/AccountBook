@@ -2,7 +2,7 @@ Ext.define('Ab.view.phone.Setting', {
     extend: 'Ab.view.UrlBasedPanel',
     xtype: 'phonesetting',
 
-    require: ['Ext.TitleBar'],
+    requires: ['Ext.TitleBar'],
 
     config: {
         title: '設定',

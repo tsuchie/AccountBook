@@ -7,12 +7,13 @@ Ext.define('Ab.view.UrlBasedPanel', {
         updateUrl: true
     },
 
-    mayUpdateUrl: function() {
-        if (this.getUpdateUrl()) {
+    mayUpdateUrl: function () {
+        var me = this;
+        if (me.getUpdateUrl()) {
             console.log('update url');
-            Ab.app.updateUrl(this.getUrl());
+            Ab.app.updateUrl(me.getUrl());
         }
-        this.setUpdateUrl(true);
+        me.setUpdateUrl(true);
     }
 
 });

@@ -14,7 +14,7 @@ Ext.define('Ab.view.account.Form', {
             {
                 layout: {
                     type: 'vbox',
-                    pack:'center',
+                    pack: 'center',
                     align: 'center'
                 },
                 items: {
@@ -23,7 +23,7 @@ Ext.define('Ab.view.account.Form', {
                     text: '記録する',
                     width: '80%',
                     minWidth: '200px',
-                    handler: function() {
+                    handler: function () {
                         var form = this.up('accountform');
                         console.log(
                             'save record', form.getRecord(), form.getValues());
@@ -35,7 +35,7 @@ Ext.define('Ab.view.account.Form', {
         ]
     },
 
-    setup: function() {
+    setup: function () {
         var now = new Date();
         var id = now.getTime() + '_' + (Math.random() * 1000 | 0);
         console.log('setup form', id);

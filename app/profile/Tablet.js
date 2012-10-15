@@ -10,11 +10,11 @@ Ext.define('Ab.profile.Tablet', {
     },
 
     //this profile will be activated if we detect we're running on a Tablet
-    isActive: function(app) {
+    isActive: function (app) {
         return Ext.os.is.Tablet;
     },
 
-    launch: function() {
+    launch: function () {
         console.log('tablet launch');
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();

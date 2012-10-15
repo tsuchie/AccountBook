@@ -18,7 +18,7 @@ Ext.define('Ab.view.account.List', {
         ]
     },
 
-    onRecordTap: function(self, index, target, record, e, eOpts) {
+    onRecordTap: function (self, index, target, record, e, eOpts) {
         console.log('record tappd');
         this.fireEvent('recordtap', record);
     }

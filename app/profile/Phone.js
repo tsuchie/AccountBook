@@ -10,11 +10,11 @@ Ext.define('Ab.profile.Phone', {
     },
 
     //this profile will be activated if we detect we're running on a Phone
-    isActive: function(app) {
+    isActive: function (app) {
         return Ext.os.is.Phone;
     },
 
-    launch: function() {
+    launch: function () {
         console.log('phone launch');
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();

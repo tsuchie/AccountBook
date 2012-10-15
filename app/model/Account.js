@@ -11,13 +11,14 @@ Ext.define('Ab.model.Account', {
         ]
     },
 
-    setValues: function(values) {
-        this.getFields().each(function(field) {
+    setValues: function (values) {
+        var me = this;
+        me.getFields().each(function (field) {
             var fid = field.getName();
             if (!Ext.isEmpty(values[fid])) {
-                this.set(fid, values[fid]);
+                me.set(fid, values[fid]);
             }
-        }, this);
+        });
     }
 
 });

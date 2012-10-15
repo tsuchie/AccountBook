@@ -23,16 +23,16 @@ Ext.define('Ab.view.account.Detail', {
         ]
     },
 
-    constructor: function() {
+    constructor: function () {
         var me = this;
-        this.callParent();
-        this.actionSheet = Ext.create('Ext.ActionSheet', {
+        me.callParent();
+        me.actionSheet = Ext.create('Ext.ActionSheet', {
             hidden: true,
             itemId: 'actionSheet',
             items: [
                 {
                     text: '編集',
-                    handler: function() {
+                    handler: function () {
                         me.fireEvent('hideaction');
                         me.fireEvent('showeditform', me.getRecord());
                     }
@@ -40,7 +40,7 @@ Ext.define('Ab.view.account.Detail', {
                 {
                     text: '削除',
                     ui  : 'decline',
-                    handler: function() {
+                    handler: function () {
                         me.fireEvent('hideaction');
                         me.fireEvent('showdeleteconfirm', me.getRecord());
                     }
@@ -48,13 +48,13 @@ Ext.define('Ab.view.account.Detail', {
                 {
                     text: 'キャンセル',
                     ui  : 'confirm',
-                    handler: function() {
+                    handler: function () {
                         me.fireEvent('canselaction');
                     }
                 }
             ]
         });
-        Ext.Viewport.add(this.actionSheet);
+        Ext.Viewport.add(me.actionSheet);
     },
 
     showActionSheet: function () {

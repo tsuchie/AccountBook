@@ -38,33 +38,33 @@ Ext.define('Ab.controller.Accounts', {
 
     showEditForm: Ext.emptyFn,
 
-    goList: function() {
+    goList: function () {
         console.log('go list');
         this.redirectTo('accounts');
     },
 
-    goDetail: function(record) {
+    goDetail: function (record) {
         console.log('go detail', record.get('id'));
         this.redirectTo('accounts/' + record.get('id'));
     },
 
-    goEditForm: function(record) {
+    goEditForm: function (record) {
         console.log('go edit form', record.get('id'));
         this.redirectTo('accounts/' + record.get('id') + '/edit');
     },
 
-    showAction: function() {
+    showAction: function () {
         console.log('show action');
         this.getDetail().showActionSheet();
     },
 
-    hideAction: function() {
+    hideAction: function () {
         console.log('hide action');
         this.getDetail().hideActionSheet();
     },
 
-    showDeleteConfirm: function(record) {
-        Ext.Msg.confirm('確認', '削除してもいいですか？', function(btn) {
+    showDeleteConfirm: function (record) {
+        Ext.Msg.confirm('確認', '削除してもいいですか？', function (btn) {
             console.log(btn);
             if (btn === 'yes') {
                 this.deleteRecord(record);
@@ -72,7 +72,7 @@ Ext.define('Ab.controller.Accounts', {
         }, this);
     },
 
-    saveRecord: function(record, values) {
+    saveRecord: function (record, values) {
         console.log('save record in controller', record, values);
         record.setValues(values);
         var store = Ext.getStore('Accounts');
@@ -84,7 +84,7 @@ Ext.define('Ab.controller.Accounts', {
         this.goDetail(record);
     },
 
-    deleteRecord: function(record) {
+    deleteRecord: function (record) {
         console.log('delete record', record);
         var store = Ext.getStore('Accounts');
         store.remove(record);
@@ -93,7 +93,7 @@ Ext.define('Ab.controller.Accounts', {
     },
 
     //called when the Application is launched, remove if not needed
-    launch: function(app) {
+    launch: function (app) {
 
     }
 
