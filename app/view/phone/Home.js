@@ -2,7 +2,12 @@ Ext.define('Ab.view.phone.Home', {
     extend: 'Ab.view.UrlBasedPanel',
     xtype: 'phonehome',
 
-    require: ['Ext.TitleBar'],
+    requires: [
+        'Ext.TitleBar',
+        'Ext.carousel.Carousel',
+        'Ab.view.chart.Daily',
+        'Ab.view.chart.Ratio'
+    ],
 
     config: {
         title: 'ホーム',
@@ -15,6 +20,13 @@ Ext.define('Ab.view.phone.Home', {
                 docked: 'top',
                 xtype: 'titlebar',
                 title: 'ホーム'
+            },
+            {
+                xtype: 'carousel',
+                items: [
+                    { xtype: 'chartdaily' },
+                    { xtype: 'chartratio' }
+                ]
             }
         ]
     }
