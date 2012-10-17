@@ -26,10 +26,10 @@ Ext.define('Ab.view.chart.Ratio', {
             type: 'pie',
             labelField: 'category',
             xField: 'account',
-            donut: 30,
-            subStyle: {
-                fill: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6']
-            }
+            donut: 30
+            // subStyle: {
+            //     fill: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6']
+            // }
         }]);
 
         // sample data
@@ -45,6 +45,11 @@ Ext.define('Ab.view.chart.Ratio', {
     setData: function (data) {
         var me = this;
         me.getStore().setData(data);
+        me.getSeries()[0].setSubStyle({
+            fill: data.map(function (rec) {
+                return rec.color;
+            })
+        });
     }
 
 });

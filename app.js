@@ -9,7 +9,7 @@ Ext.Loader.setPath({
 Ext.application({
     profiles: ["Tablet", "Phone"],
 
-    controllers: [],
+    controllers: ['Charts'],
 
     models: ["Account"],
 
@@ -45,15 +45,15 @@ Ext.application({
         '1496x2048': 'resources/startup/1496x2048.png'
     },
 
-    updateUrl: function(url) {
+    updateUrl: function (url) {
         window.location.hash = url;
     },
 
-    onUpdated: function() {
+    onUpdated: function () {
         Ext.Msg.confirm(
             "Application Update",
             "This application has just successfully been updated to the latest version. Reload now?",
-            function(buttonId) {
+            function (buttonId) {
                 if (buttonId === 'yes') {
                     window.location.reload();
                 }

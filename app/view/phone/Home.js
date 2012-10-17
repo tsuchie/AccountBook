@@ -28,6 +28,17 @@ Ext.define('Ab.view.phone.Home', {
                     { xtype: 'chartratio' }
                 ]
             }
+        ],
+
+        listeners: [
+            {
+                event: 'show',
+                fn: function () {
+                    console.log('show chart');
+                    this.down('chartdaily').fireEvent('loaddata');
+                    this.down('chartratio').fireEvent('loaddata');
+                }
+            }
         ]
     }
 
