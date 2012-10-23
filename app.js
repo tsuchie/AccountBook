@@ -11,9 +11,9 @@ Ext.application({
 
     controllers: ['Charts'],
 
-    models: ["Account"],
+    models: ['Account', 'Category'],
 
-    stores: ['Accounts'],
+    stores: ['Accounts', 'Categories'],
 
     name: 'Ab',
 

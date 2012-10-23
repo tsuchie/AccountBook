@@ -2,6 +2,7 @@ Ext.define('Ab.controller.Charts', {
     extend: 'Ext.app.Controller',
 
     requires: [
+        'Ab.service.Accounts',
         'Ab.view.chart.Daily',
         'Ab.view.chart.Ratio'
     ],
@@ -33,20 +34,40 @@ Ext.define('Ab.controller.Charts', {
     loadRatioData: function () {
         console.log('load ratio data');
         var me = this,
-            data = [ //TODO implement
-                {category: 'hoge', account: 80, color: '#e0440e'},
-                {category: 'fuga', account: 30, color: '#e6693e'},
-                {category: 'piyo', account: 50, color: '#ec8f6e'},
-                {category: 'foo', account: 40, color: '#f3b49f'},
-                {category: 'bar', account: 20, color: '#f6c7b6'}
-            ];
+            data = me.getService().aggregateByCategories();
         me.getRatio().setData(data);
     },
 
+    getService: function () {
+        console.log('get accounts service');
+        var me = this;
+        //TODO remove
+        // service may be created in init method
+        if (!me.service_) {
+            console.log('create accounts service @getter');
+            me.service_ = Ext.create('Ab.service.Accounts', {
+                accounts: Ext.getStore('Accounts'),
+                categories: Ext.getStore('Categories')
+            });
+        }
+        return me.service_;
+    },
+
+    init: function () {
+        console.log('init charts controller');
+        var me = this;
+        if (!me.service_) {
+            console.log('create accounts service @init');
+            me.service_ = Ext.create('Ab.service.Accounts', {
+                accounts: Ext.getStore('Accounts'),
+                categories: Ext.getStore('Categories')
+            });
+        }
+    },
 
     //called when the Application is launched, remove if not needed
     launch: function (app) {
-
+        console.log('charts launch constructor');
     }
 
 });

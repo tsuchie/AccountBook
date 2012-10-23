@@ -20,6 +20,7 @@ Ext.define('Ab.view.account.FieldSet', {
                 name: 'category',
                 label: 'カテゴリ',
                 options: [
+                    //TODO get from categories store
                     {text: '食費', value: '10'},
                     {text: '交通', value: '20'},
                     {text: '交際費', value: '30'},
