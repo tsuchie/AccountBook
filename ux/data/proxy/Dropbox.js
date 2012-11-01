@@ -96,18 +96,27 @@ Ext.define('Ext.ux.data.proxy.Dropbox', {
     update: function (operation, callback, scope) {
         console.log('update');
         var me = this,
-            path = me.selectFilePath(me.cache_),
-            records = operation.getRecords();
+            records = operation.getRecords(),
+            path = me.selectFilePath(records);
 
         me.updateCache(path, records);
-        this.writeFile(path, JSON.stringify(me.getCacheAsData(path)));
+        me.writeFile(path, JSON.stringify(me.getCacheAsData(path)));
         if (typeof callback === 'function') {
-            callback.call(scope || this, operation);
+            callback.call(scope || me, operation);
         }
     },
 
     destroy: function (operation, callback, scope) {
-        console.log('destroy', arguments);
+        console.log('destroy');
+        var me = this,
+            records = operation.getRecords(),
+            path = me.selectFilePath(records);
+
+        me.removeCache(path, records);
+        me.writeFile(path, JSON.stringify(me.getCacheAsData(path)));
+        if (typeof callback === 'function') {
+            callback.call(scope || me, operation);
+        }
     },
 
     auth: function () {
@@ -177,6 +186,15 @@ Ext.define('Ext.ux.data.proxy.Dropbox', {
 
         records.forEach(function (rec) {
             cache[rec.getId()] = rec.getData();
+        });
+    },
+
+    removeCache: function (key, records) {
+        var me = this,
+            cache = me.getCache(key);
+
+        records.forEach(function (rec) {
+            delete cache[rec.getId()];
         });
     },
 
