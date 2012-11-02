@@ -53,9 +53,9 @@ Ext.define('Ab.controller.Accounts', {
         this.redirectTo('accounts/' + record.get('id') + '/edit');
     },
 
-    showAction: function () {
+    showAction: function (btn) {
         console.log('show action');
-        this.getDetail().showActionSheet();
+        this.getDetail().showActionSheet(btn);
     },
 
     hideAction: function () {

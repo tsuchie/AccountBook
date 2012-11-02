@@ -55,16 +55,24 @@ Ext.define('Ab.view.tablet.Accounts', {
                             ]
                         },
                         {
-                            xtype: 'accountdetail'
+                            xtype: 'accountdetail',
+                            actionSheetConfig: {
+                                width: '320pt',
+                                height: '110pt',
+                                showAnimation: 'fade',
+                                hideAnimation: '',
+                                hideOnMaskTap: true
+                            }
                         }
                     ],
                     listeners: [
                         {
                             delegate: '#actionButton',
                             event: 'tap',
-                            fn: function () {
+                            fn: function (btn) {
+                                console.log(arguments);
                                 console.log('action button');
-                                this.down('accountdetail').fireEvent('showaction');
+                                this.down('accountdetail').fireEvent('showaction', btn);
                             }
                         }
                     ]

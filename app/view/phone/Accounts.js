@@ -76,7 +76,7 @@ Ext.define('Ab.view.phone.Accounts', {
                             event: 'tap',
                             fn: function () {
                                 console.log('action button');
-                                this.down('accountdetail').fireEvent('showaction');
+                                this.down('accountdetail').fireEvent('showaction', null);
                             }
                         }
                     ]

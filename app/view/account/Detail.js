@@ -8,6 +8,7 @@ Ext.define('Ab.view.account.Detail', {
     ],
 
     config: {
+        actionSheetConfig: {},
         items: [
             {
                 xtype: 'accountfieldset',
@@ -23,10 +24,11 @@ Ext.define('Ab.view.account.Detail', {
         ]
     },
 
-    constructor: function () {
+    constructor: function (config) {
         var me = this;
-        me.callParent();
-        me.actionSheet = Ext.create('Ext.ActionSheet', {
+        me.callParent(arguments);
+
+        me.actionSheet = Ext.create('Ext.ActionSheet', Ext.merge({
             hidden: true,
             itemId: 'actionSheet',
             items: [
@@ -53,12 +55,17 @@ Ext.define('Ab.view.account.Detail', {
                     }
                 }
             ]
-        });
+        }, config.actionSheetConfig));
         Ext.Viewport.add(me.actionSheet);
+
     },
 
-    showActionSheet: function () {
-        this.actionSheet.show();
+    showActionSheet: function (btn) {
+        if (btn) {
+            this.actionSheet.showBy(btn);
+        } else {
+            this.actionSheet.show();
+        }
     },
 
     hideActionSheet: function () {
