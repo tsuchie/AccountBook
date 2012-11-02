@@ -92,6 +92,17 @@ Ext.define('Ab.controller.Accounts', {
         this.goList();
     },
 
+    doWithRecord: function (id, fn) {
+        var me = this;
+        var store = Ext.getStore('Accounts');
+        var record = store.findRecord('id', id);
+        if (Ext.isEmpty(record)) {
+            me.goList();
+            return;
+        }
+        fn.call(me, record);
+    },
+
     //called when the Application is launched, remove if not needed
     launch: function (app) {
 

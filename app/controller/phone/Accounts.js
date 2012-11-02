@@ -59,17 +59,6 @@ Ext.define('Ab.controller.phone.Accounts', {
         var old = me.getMain().getActiveItem();
         me.getEditPanel().setUpdateUrl(updateUrl);
         me.getMain().setActiveItem(me.getEditPanel());
-    },
-
-    doWithRecord: function (id, fn) {
-        var me = this;
-        var store = Ext.getStore('Accounts');
-        var record = store.findRecord('id', id);
-        if (Ext.isEmpty(record)) {
-            me.goList();
-            return;
-        }
-        fn.call(me, record);
     }
 
 });
