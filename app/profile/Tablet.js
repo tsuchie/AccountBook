@@ -3,15 +3,17 @@ Ext.define('Ab.profile.Tablet', {
 
     //define any additional classes your Profile needs here
     config: {
-        views: [],
+        views: ['Main'],
         models: [],
         stores: [],
-        controllers: []
+        controllers: ['Accounts']
     },
 
     //this profile will be activated if we detect we're running on a Tablet
     isActive: function (app) {
-        return Ext.os.is.Tablet;
+        var vp = Ext.Viewport;
+        //TODO Is the criteria size adequacy?
+        return vp.getWindowWidth() * vp.getWindowHeight() > 640 * 960;
     },
 
     launch: function () {
