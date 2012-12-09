@@ -53,7 +53,7 @@ Ext.define('Ext.ux.calc.Calculator', {
                         {
                             text: 'AC',
                             ui: 'decline',
-                            act: function(calc, val) {
+                            act: function (calc, val) {
                                 calc.setNewInput(true);
                                 calc.setLhs(0);
                                 calc.setRhs(0);
@@ -72,7 +72,7 @@ Ext.define('Ext.ux.calc.Calculator', {
                         {
                             text: '&plusmn;',
                             ui: 'action',
-                            act: function(calc, val) {
+                            act: function (calc, val) {
                                 if (val.indexOf('-') === 0) {
                                     calc.setValue(val.slice(1));
                                 } else {
@@ -86,7 +86,7 @@ Ext.define('Ext.ux.calc.Calculator', {
                         { text: '2' },
                         {
                             text: '00',
-                            act: function(calc, val) {
+                            act: function (calc, val) {
                                 if (val === '0') {
                                     return;
                                 }
@@ -101,7 +101,7 @@ Ext.define('Ext.ux.calc.Calculator', {
                         {
                             text: '&divide;',
                             ui: 'action',
-                            op: function(lhs, rhs) {
+                            op: function (lhs, rhs) {
                                 console.log('divide');
                                 return lhs / rhs;
                             }
@@ -111,7 +111,7 @@ Ext.define('Ext.ux.calc.Calculator', {
                         { text: '3' },
                         {
                             text: '.',
-                            act: function(calc, val) {
+                            act: function (calc, val) {
                                 if (val.indexOf('.') < 0) {
                                     calc.setValue(val + this.getText());
                                     calc.setRhs(calc.getValueAsNum());
@@ -125,7 +125,7 @@ Ext.define('Ext.ux.calc.Calculator', {
                         {
                             text: '&times;',
                             ui: 'action',
-                            op: function(lhs, rhs) {
+                            op: function (lhs, rhs) {
                                 console.log('times');
                                 return lhs * rhs;
                             }
@@ -133,7 +133,7 @@ Ext.define('Ext.ux.calc.Calculator', {
                         {
                             text: '&minus;',
                             ui: 'action',
-                            op: function(lhs, rhs) {
+                            op: function (lhs, rhs) {
                                 console.log('minus');
                                 return lhs - rhs;
                             }
@@ -141,7 +141,7 @@ Ext.define('Ext.ux.calc.Calculator', {
                         {
                             text: '&plus;',
                             ui: 'action',
-                            op: function(lhs, rhs) {
+                            op: function (lhs, rhs) {
                                 console.log('plus');
                                 return lhs + rhs;
                             }
@@ -150,7 +150,7 @@ Ext.define('Ext.ux.calc.Calculator', {
                             text: '=',
                             height: '66pt',
                             ui: 'confirm',
-                            act: function(calc, val, op) {
+                            act: function (calc, val, op) {
                                 console.log('equal');
                                 if (op.isEq) {
                                     calc.operate(op, op);
@@ -171,14 +171,14 @@ Ext.define('Ext.ux.calc.Calculator', {
     },
 
 
-    constructor: function() {
+    constructor: function () {
         console.log('calculator constructor');
         var me = this;
         me.callParent();
         me.on({
             delegate: 'button',
             scope: me,
-            tap: function(btn) {
+            tap: function (btn) {
                 console.log('update calc value');
                 var me = this,
                     op = me.getOp(),
@@ -202,7 +202,7 @@ Ext.define('Ext.ux.calc.Calculator', {
     },
 
 
-    operate: function(op, nextOp) {
+    operate: function (op, nextOp) {
         var me = this;
         console.log('operate');
 
@@ -227,7 +227,7 @@ Ext.define('Ext.ux.calc.Calculator', {
     },
 
 
-    applyRhs: function(newVal, oldVal) {
+    applyRhs: function (newVal, oldVal) {
         console.log(newVal, oldVal);
         if (this.getOp().isEq) {
             this.setLhs(newVal);
@@ -237,12 +237,12 @@ Ext.define('Ext.ux.calc.Calculator', {
     },
 
 
-    getValueAsNum: function() {
+    getValueAsNum: function () {
         return parseFloat(this.getValue());
     },
 
 
-    prepare: function() {
+    prepare: function () {
         var me = this;
         if (me.getNewInput()) {
             me.setValue('0');

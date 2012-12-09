@@ -11,62 +11,57 @@ Ext.define('Ext.ux.field.Calculator', {
         }
     },
 
-    initialize: function() {
+    initialize: function () {
         var me = this,
             component = me.getComponent();
 
         me.callParent();
-
         component.on({
             scope: me,
             masktap: 'onMaskTap'
         });
     },
 
-    onMaskTap: function() {
-        if (this.getDisabled()) {
+    onMaskTap: function () {
+        var me = this;
+        if (me.getDisabled()) {
             return false;
         }
-
-        this.onFocus();
-
+        me.onFocus();
         return false;
     },
 
-    onFocus: function(e) {
-        var component = this.getComponent();
-        this.fireEvent('focus', this, e);
+    onFocus: function (e) {
+        var me = this,
+            component = me.getComponent();
 
+        me.fireEvent('focus', me, e);
         component.input.dom.blur();
-
-        if (this.getReadOnly()) {
+        if (me.getReadOnly()) {
             return false;
         }
-
-        this.isFocused = true;
-
-        this.getCalculator().show();
+        me.isFocused = true;
+        me.getCalculator().show();
     },
 
-    getCalculator: function() {
-        var calculator = this._calculator,
-            value = this.getValue();
+    getCalculator: function () {
+        var me = this,
+            calculator = me._calculator,
+            value = me.getValue();
 
         if (calculator && !calculator.isPicker) {
             calculator = Ext.create('Ext.ux.calc.Calculator');
-
-            if (value != null) {
+            if (value !== null) {
                 calculator.setValue(value);
             }
         }
 
         calculator.on({
-            scope: this,
-            change: 'onCalcChange',
-            hide  : 'onCalcHide'
+            scope: me,
+            change: 'onCalcChange'
         });
         Ext.Viewport.add(calculator);
-        this._calculator = calculator;
+        me._calculator = calculator;
 
         return calculator;
     },
