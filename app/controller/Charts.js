@@ -8,6 +8,9 @@ Ext.define('Ab.controller.Charts', {
     ],
 
     config: {
+        routes: {
+            'home': 'showHome'
+        },
         refs: {
             'daily': 'chartdaily',
             'ratio': 'chartratio'
@@ -22,6 +25,7 @@ Ext.define('Ab.controller.Charts', {
         }
     },
 
+    showHome: Ext.emptyFn,
 
     loadDailyData: function () {
         console.log('load daily data');

@@ -9,7 +9,7 @@ Ext.Loader.setPath({
 Ext.application({
     profiles: ["Tablet", "Phone"],
 
-    controllers: ['Charts'],
+    controllers: [],
 
     models: ['Account', 'Category'],
 
