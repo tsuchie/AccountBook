@@ -7,7 +7,7 @@ Ext.define('Ab.view.UrlBasedTabPanel', {
             'activeitemchange': function (self, newTab, oldTab, eOpts) {
                 var me = this;
                 if (newTab.isXType('urlbasedpanel') && me.updateUrl_) {
-                    Ab.app.updateUrl(newTab.getUrl());
+                    Ab.app.redirectTo(newTab.getUrl());
                 }
                 me.updateUrl_ = true;
             }

@@ -45,10 +45,6 @@ Ext.application({
         '1496x2048': 'resources/startup/1496x2048.png'
     },
 
-    updateUrl: function (url) {
-        window.location.hash = url;
-    },
-
     onUpdated: function () {
         Ext.Msg.confirm(
             "Application Update",
