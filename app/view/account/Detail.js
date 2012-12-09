@@ -35,7 +35,7 @@ Ext.define('Ab.view.account.Detail', {
                 {
                     text: '編集',
                     handler: function () {
-                        me.fireEvent('hideaction');
+                        me.hideActionSheet();
                         me.fireEvent('showeditform', me.getRecord());
                     }
                 },
@@ -43,7 +43,7 @@ Ext.define('Ab.view.account.Detail', {
                     text: '削除',
                     ui  : 'decline',
                     handler: function () {
-                        me.fireEvent('hideaction');
+                        me.hideActionSheet();
                         me.fireEvent('showdeleteconfirm', me.getRecord());
                     }
                 },
@@ -51,13 +51,12 @@ Ext.define('Ab.view.account.Detail', {
                     text: 'キャンセル',
                     ui  : 'confirm',
                     handler: function () {
-                        me.fireEvent('canselaction');
+                        me.hideActionSheet();
                     }
                 }
             ]
         }, config.actionSheetConfig));
         Ext.Viewport.add(me.actionSheet);
-
     },
 
     showActionSheet: function (btn) {
@@ -71,5 +70,4 @@ Ext.define('Ab.view.account.Detail', {
     hideActionSheet: function () {
         this.actionSheet.hide();
     }
-
 });

@@ -21,8 +21,7 @@ Ext.define('Ab.controller.Accounts', {
                 'showeditform': 'goEditForm',
                 'showdeleteconfirm': 'showDeleteConfirm',
                 'showaction': 'showAction',
-                'hideaction': 'hideAction',
-                'canselaction': 'hideAction'
+                'hideaction': 'hideAction'
             },
             'form': {
                 'saverecord': 'saveRecord'
