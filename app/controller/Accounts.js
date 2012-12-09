@@ -14,7 +14,7 @@ Ext.define('Ab.controller.Accounts', {
             'form': 'accountform'
         },
         control: {
-            'accountlist': {
+            'list': {
                 'recordtap': 'goDetail'
             },
             'detail': {
