@@ -31,7 +31,8 @@ Ext.define('Ab.view.account.FieldSet', {
             {
                 xtype: 'datepickerfield',
                 name: 'recorded',
-                label: '日付'
+                label: '日付',
+                value: new Date()
             },
             {
                 xtype: 'textareafield',
