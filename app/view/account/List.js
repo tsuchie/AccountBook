@@ -6,9 +6,12 @@ Ext.define('Ab.view.account.List', {
         store: 'Accounts',
         grouped: true,
         itemTpl: new Ext.XTemplate(
-            '<div>{[this.record.getCategoryName()]}</div>',
-            '<div>{account}円</div>',
-            '<div>{memo}</div>', {
+            '<div>',
+                '<span class="ab-account">{account}円</span>',
+                '<span class="ab-category-name">{[this.record.getCategoryName()]}</span>',
+                '<div class="ab-memo">{memo}</div>',
+            '</div>',
+            {
                 disableFormats: true
             }
         ),
