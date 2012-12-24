@@ -1,14 +1,8 @@
 Ext.define('Ab.service.Accounts', {
 
-    constructor: function (args) {
-        this.accounts = args.accounts;
-        this.categories = args.categories;
-    },
-
-
-    isSameMonth: function (d1, d2) {
-        return d1.getFullYear() === d2.getFullYear() &&
-               d1.getMonth() === d2.getMonth();
+    constructor: function (accounts, categories) {
+        this.accounts = accounts;
+        this.categories = categories;
     },
 
 
@@ -59,7 +53,15 @@ Ext.define('Ab.service.Accounts', {
         });
 
         return rv;
-    }
+    },
+
+
+    isSameMonth: function (d1, d2) {
+        return d1.getFullYear() === d2.getFullYear() &&
+               d1.getMonth() === d2.getMonth();
+    },
+
+
 
 });
 

@@ -22,6 +22,11 @@ Ext.define('Ab.view.chart.Daily', {
                     text: '金額',
                     fontSize: 14
                 },
+                label: {
+                    rotate: {
+                        degrees: -30
+                    }
+                },
                 grid: true,
                 minimum: 0
             },

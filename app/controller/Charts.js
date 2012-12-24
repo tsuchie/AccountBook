@@ -44,10 +44,10 @@ Ext.define('Ab.controller.Charts', {
     getService: function () {
         var me = this;
         if (!me.service_) {
-            me.service_ = Ext.create('Ab.service.Accounts', {
-                accounts: Ext.getStore('Accounts'),
-                categories: Ext.getStore('Categories')
-            });
+            me.service_ = Ext.create('Ab.service.Accounts',
+                Ext.getStore('Accounts'),
+                Ext.getStore('Categories')
+            );
         }
         return me.service_;
     }
