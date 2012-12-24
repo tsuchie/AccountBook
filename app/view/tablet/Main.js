@@ -1,5 +1,5 @@
 Ext.define('Ab.view.tablet.Main', {
-    extend: 'Ext.tab.Panel',
+    extend: 'Ab.view.UrlBasedTabPanel',
     xtype: 'tabletmain',
     requires: [
         'Ab.view.tablet.Home',
@@ -13,13 +13,6 @@ Ext.define('Ab.view.tablet.Main', {
 
         layout: {
             animation: ''
-        },
-
-        listeners: {
-            'activeitemchange': function (self, newTab, oldTab, eOpts) {
-                console.log('change tab');
-                newTab.mayUpdateUrl();
-            }
         },
 
         items: [

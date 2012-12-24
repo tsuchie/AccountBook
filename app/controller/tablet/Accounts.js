@@ -34,7 +34,6 @@ Ext.define('Ab.controller.tablet.Accounts', {
         var me = this;
         me.doWithRecord(id, function (record) {
             me.getDetail().setRecord(record);
-            me.getViewPanel().setUpdateUrl(false);
             me.getMain().setActiveItem(me.getViewPanel());
             me.getPage().setActiveItem(1);
         });
@@ -51,8 +50,6 @@ Ext.define('Ab.controller.tablet.Accounts', {
 
     showForm: function (updateUrl) {
         var me = this;
-        var old = me.getMain().getActiveItem();
-        me.getEditPanel().setUpdateUrl(updateUrl);
         me.getMain().setActiveItem(me.getEditPanel());
     }
 
