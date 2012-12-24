@@ -14,6 +14,17 @@ Ext.define('Ab.store.Categories', {
             ['40', 'エンタメ', '#f3b49f'],
             ['50', '水道・光熱', '#f6c7b6']
         ]
+    },
+
+    getAllAsOptions: function () {
+        var me = this;
+        if (!me.options_) {
+            var option = [];
+            me.options_ = me.getData().items.map(function (rec) {
+                return {value: rec.raw[0], text: rec.raw[1]};
+            });
+        }
+        return me.options_;
     }
 
 });
