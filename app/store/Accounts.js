@@ -1,7 +1,7 @@
 Ext.define('Ab.store.Accounts', {
     extend: 'Ext.data.Store',
 
-    requires: ['Ext.data.proxy.LocalStorage'],
+    requires: ['Ext.ux.data.proxy.Dropbox'],
 
     config: {
         model: 'Ab.model.Account',
@@ -9,6 +9,17 @@ Ext.define('Ab.store.Accounts', {
             type: 'localstorage',
             id: 'accounts-store'
         },
-        autoLoad: true
+        // proxy: {
+        //     type: 'dropbox',
+        //     key: 'QD9zaYCkWWA=|I9xuutP94vqNuwFxNedFVcIzbqFnjzIAAZ7XGY4Z7g==',
+        //     rememberUser: true
+        // },
+        autoLoad: true,
+        sorters: 'recorded',
+        grouper: {
+            groupFn: function (record) {
+                return record.getRecordedStr();
+            }
+        }
     }
 });
