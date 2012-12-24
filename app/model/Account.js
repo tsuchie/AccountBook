@@ -26,7 +26,7 @@ Ext.define('Ab.model.Account', {
 
     getRecordedStr: function () {
         var date = this.get('recorded');
-        return [date.getFullYear(), date.getMonth() + 1, date.getDate()].join('/');
+        return Ext.Date.format(date, 'Y/m/d');
     },
 
     getCategoryName: function () {

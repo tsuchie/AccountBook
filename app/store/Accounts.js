@@ -1,7 +1,10 @@
 Ext.define('Ab.store.Accounts', {
     extend: 'Ext.data.Store',
 
-    requires: ['Ext.ux.data.proxy.Dropbox'],
+    requires: [
+        'Ext.data.proxy.LocalStorage',
+        'Ext.ux.data.proxy.Dropbox'
+    ],
 
     config: {
         model: 'Ab.model.Account',

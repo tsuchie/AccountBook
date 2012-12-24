@@ -11,6 +11,7 @@ Ext.define('Ab.view.chart.Daily', {
     config: {
         layout: 'fit',
         animate: true,
+        insetPadding: {top: 20, left: 20, right: 20, bottom: 20},
         axes: [
             {
                 type: 'numeric',
@@ -54,11 +55,6 @@ Ext.define('Ab.view.chart.Daily', {
             xField: 'day',
             yField: 'account'
         }]);
-
-        // sample data
-        this.setData(Array(30).join().split(',').map(function () {
-            return Math.random() * 5000 | 0;
-        }));
     },
 
 

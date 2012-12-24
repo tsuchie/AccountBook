@@ -27,46 +27,31 @@ Ext.define('Ab.controller.Charts', {
 
     showHome: Ext.emptyFn,
 
+
     loadDailyData: function () {
         console.log('load daily data');
         var me = this,
-            data = [1, 2, 3, 4, 5, 6]; //TODO implement
+            data = me.getService().aggregateByDate(new Date());
         me.getDaily().setData(data);
     },
-
 
     loadRatioData: function () {
         console.log('load ratio data');
         var me = this,
-            data = me.getService().aggregateByCategories();
+            data = me.getService().aggregateByCategory(new Date());
         me.getRatio().setData(data);
     },
 
     getService: function () {
         console.log('get accounts service');
         var me = this;
-        //TODO remove
-        // service may be created in init method
         if (!me.service_) {
-            console.log('create accounts service @getter');
             me.service_ = Ext.create('Ab.service.Accounts', {
                 accounts: Ext.getStore('Accounts'),
                 categories: Ext.getStore('Categories')
             });
         }
         return me.service_;
-    },
-
-    init: function () {
-        console.log('init charts controller');
-        var me = this;
-        if (!me.service_) {
-            console.log('create accounts service @init');
-            me.service_ = Ext.create('Ab.service.Accounts', {
-                accounts: Ext.getStore('Accounts'),
-                categories: Ext.getStore('Categories')
-            });
-        }
     },
 
     //called when the Application is launched, remove if not needed

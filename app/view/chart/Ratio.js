@@ -11,7 +11,8 @@ Ext.define('Ab.view.chart.Ratio', {
 
     config: {
         layout: 'fit',
-        animate: true
+        animate: true,
+        insetPadding: {top: 30, left: 30, right: 30, bottom: 30}
     },
 
     constructor: function () {
@@ -27,18 +28,7 @@ Ext.define('Ab.view.chart.Ratio', {
             labelField: 'category',
             xField: 'account',
             donut: 30
-            // subStyle: {
-            //     fill: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6']
-            // }
         }]);
-
-        // sample data
-        this.setData(['食費', '交通', '交際費', 'エンタメ', '水道・光熱'].map(function (cat) {
-            return {
-                category: cat,
-                account: ((Math.random() * 10 | 0) + 3) * 1000
-            };
-        }));
     },
 
 
