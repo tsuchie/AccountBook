@@ -27,7 +27,6 @@ Ext.define('Ab.controller.Charts', {
 
     showHome: Ext.emptyFn,
 
-
     loadDailyData: function () {
         console.log('load daily data');
         var me = this,
@@ -43,7 +42,6 @@ Ext.define('Ab.controller.Charts', {
     },
 
     getService: function () {
-        console.log('get accounts service');
         var me = this;
         if (!me.service_) {
             me.service_ = Ext.create('Ab.service.Accounts', {
@@ -52,11 +50,6 @@ Ext.define('Ab.controller.Charts', {
             });
         }
         return me.service_;
-    },
-
-    //called when the Application is launched, remove if not needed
-    launch: function (app) {
-        console.log('charts launch constructor');
     }
 
 });

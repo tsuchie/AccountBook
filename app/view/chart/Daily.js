@@ -12,6 +12,7 @@ Ext.define('Ab.view.chart.Daily', {
         layout: 'fit',
         animate: true,
         insetPadding: {top: 20, left: 20, right: 20, bottom: 20},
+        innerPadding: {top: 0, left: 0, right: 5, bottom: 0},
         axes: [
             {
                 type: 'numeric',
@@ -32,8 +33,7 @@ Ext.define('Ab.view.chart.Daily', {
                     text: '日付',
                     fontSize: 14
                 },
-                minimum: 0,
-                maximum: 31
+                minimum: 0
             }
         ]
     },
@@ -49,8 +49,9 @@ Ext.define('Ab.view.chart.Daily', {
 
         this.setSeries([{
             type: 'bar',
-            subStyle: {
-                fill: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6']
+            style: {
+                minGapWidth: 2,
+                fill: '#e0440e'
             },
             xField: 'day',
             yField: 'account'
@@ -59,7 +60,8 @@ Ext.define('Ab.view.chart.Daily', {
 
 
     setData: function (data) {
-        var me = this;
+        var me = this,
+            axes = me.getAxes();
 
         function getRoundedMax(data) {
             var max = Math.max.apply(null, data),
@@ -69,15 +71,16 @@ Ext.define('Ab.view.chart.Daily', {
             return max;
         }
 
-        me.getAxes()[0].setMaximum(getRoundedMax(data));
+        axes[0].setMaximum(getRoundedMax(data));
+        axes[1].setMaximum(data.length);
 
-        var mapped = data.map(function (rec, index) {
+        var records = data.map(function (rec, index) {
             return {
                 'day': index + 1,
                 'account': rec
             };
         });
-        me.getStore().setData(mapped);
+        me.getStore().setData(records);
     }
 
 });

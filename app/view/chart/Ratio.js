@@ -4,15 +4,13 @@ Ext.define('Ab.view.chart.Ratio', {
 
     requires: [
         'Ext.data.JsonStore',
-        'Ext.chart.axis.Numeric',
-        'Ext.chart.series.Pie',
-        'Ext.chart.interactions.Rotate'
+        'Ext.chart.series.Pie'
     ],
 
     config: {
         layout: 'fit',
         animate: true,
-        insetPadding: {top: 30, left: 30, right: 30, bottom: 30}
+        insetPadding: {top: 50, left: 50, right: 50, bottom: 50}
     },
 
     constructor: function () {
@@ -25,9 +23,10 @@ Ext.define('Ab.view.chart.Ratio', {
 
         this.setSeries([{
             type: 'pie',
+            rotation: -Math.PI/2,
             labelField: 'category',
             xField: 'account',
-            donut: 30
+            donut: 25
         }]);
     },
 

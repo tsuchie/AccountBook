@@ -12,4 +12,5 @@ Ext.define('Ab.controller.phone.Charts', {
         var me = this;
         me.getMain().setActiveItem(me.getHome());
     }
+
 });

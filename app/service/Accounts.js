@@ -6,14 +6,18 @@ Ext.define('Ab.service.Accounts', {
     },
 
 
+    isSameMonth: function (d1, d2) {
+        return d1.getFullYear() === d2.getFullYear() &&
+               d1.getMonth() === d2.getMonth();
+    },
+
+
     aggregateByDate: function (date) {
         var me = this,
             days = Ext.Date.getDaysInMonth(date),
             sum = new Array(days),
             condition = function (rec) {
-                var d = rec.get('recorded');
-                return d.getFullYear() === date.getFullYear() &&
-                       d.getMonth() === date.getMonth();
+                return me.isSameMonth(rec.get('recorded'), date);
             };
 
         for (var i = 0; i < days; i++) {
@@ -33,11 +37,8 @@ Ext.define('Ab.service.Accounts', {
         var me = this,
             sum = {},
             condition = function (rec) {
-                var d = rec.get('recorded');
-                return d.getFullYear() === date.getFullYear() &&
-                       d.getMonth() === date.getMonth();
+                return me.isSameMonth(rec.get('recorded'), date);
             };
-
 
         me.accounts.queryBy(condition).each(function (rec) {
             var cat = rec.get('category');
