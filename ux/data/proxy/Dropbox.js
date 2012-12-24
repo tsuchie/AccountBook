@@ -6,7 +6,6 @@ Ext.define('Ext.ux.data.proxy.Dropbox', {
 
     config: {
         key: '',
-        id: '',
         rememberUser: false,
         enablePagingParams: false,
         filePath: 'sample.dat'
@@ -29,7 +28,13 @@ Ext.define('Ext.ux.data.proxy.Dropbox', {
     },
 
     create: function (operation, callback, scope) {
-        console.log('create', arguments);
+        console.log('create');
+        var me = this,
+            records = operation.getRecords(),
+            path = me.selectFilePath(records);
+
+        me.updateCache(path, records);
+        me.writeFile(path, JSON.stringify(me.getCacheAsData(path)), operation, callback, scope);
     },
 
     read: function (operation, callback, scope) {
@@ -100,10 +105,7 @@ Ext.define('Ext.ux.data.proxy.Dropbox', {
             path = me.selectFilePath(records);
 
         me.updateCache(path, records);
-        me.writeFile(path, JSON.stringify(me.getCacheAsData(path)));
-        if (typeof callback === 'function') {
-            callback.call(scope || me, operation);
-        }
+        me.writeFile(path, JSON.stringify(me.getCacheAsData(path)), operation, callback, scope);
     },
 
     destroy: function (operation, callback, scope) {
@@ -113,10 +115,7 @@ Ext.define('Ext.ux.data.proxy.Dropbox', {
             path = me.selectFilePath(records);
 
         me.removeCache(path, records);
-        me.writeFile(path, JSON.stringify(me.getCacheAsData(path)));
-        if (typeof callback === 'function') {
-            callback.call(scope || me, operation);
-        }
+        me.writeFile(path, JSON.stringify(me.getCacheAsData(path)), operation, callback, scope);
     },
 
     auth: function () {
@@ -149,7 +148,7 @@ Ext.define('Ext.ux.data.proxy.Dropbox', {
         });
     },
 
-    writeFile: function (path, data) {
+    writeFile: function (path, data, operation, callback, scope) {
         var me = this,
             client = me.client_;
 
@@ -157,7 +156,9 @@ Ext.define('Ext.ux.data.proxy.Dropbox', {
             if (error) {
                 return me.showError(error);
             }
-            console.log(stat);
+            if (typeof callback === 'function') {
+                callback.call(scope || me, operation);
+            }
         });
     },
 
