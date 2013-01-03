@@ -20,7 +20,6 @@ Ext.define('Ab.controller.tablet.Accounts', {
         var me = this;
         me.getMain().setActiveItem(me.getViewPanel());
         me.getPage().setActiveItem(0);
-        me.getList().refresh();
     },
 
     showCreateForm: function () {
